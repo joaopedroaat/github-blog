@@ -1,6 +1,14 @@
-import { useEffect, useState } from 'react'
-import { githubApi, UserResponse } from '../../apis/github'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import {
+  faArrowUpRightFromSquare,
+  faBuilding,
+  faUserGroup,
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { AxiosResponse } from 'axios'
+import { useEffect, useState } from 'react'
+import { UserResponse, githubApi } from '../../apis/github'
+import { FooterIcons, ProfileContainer } from './styles'
 
 interface User {
   id: string
@@ -10,7 +18,7 @@ interface User {
   company: string | null
   followers: number
   avatarUrl: string
-  url: string
+  profileUrl: string
 }
 
 export function Profile() {
@@ -22,7 +30,7 @@ export function Profile() {
     company: null,
     followers: 0,
     avatarUrl: '',
-    url: '',
+    profileUrl: '',
   })
 
   useEffect(() => {
@@ -30,8 +38,10 @@ export function Profile() {
       const response: AxiosResponse<UserResponse> = await githubApi.get(
         `/users/joaopedroaat`,
       )
-      const { id, login, name, bio, company, followers, avatarUrl, url } =
+
+      const { id, login, name, bio, company, followers, avatar_url } =
         response.data
+
       setUser({
         id,
         login,
@@ -39,13 +49,52 @@ export function Profile() {
         bio,
         company,
         followers,
-        avatarUrl,
-        url,
+        avatarUrl: avatar_url,
+        profileUrl: `https://github.com/${user.login}`,
       })
     }
 
     fetchUserData()
-  }, [])
+  }, [user.login])
 
-  return <div>{JSON.stringify(user)}</div>
+  return (
+    <ProfileContainer>
+      <img src={user.avatarUrl} alt="" />
+      <section>
+        <header>
+          <h1>{user.name}</h1>
+          <a href={user.profileUrl} target="_blank" rel="noreferrer">
+            Github
+            <FontAwesomeIcon icon={faArrowUpRightFromSquare} size="sm" />
+          </a>
+        </header>
+        <main>
+          {user.bio
+            ? user.bio
+            : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. A, enim. Soluta, recusandae nam! Molestiae repellat debitis obcaecati fugit sunt placeat magni nostrum totam sed eaque, enim deleniti assumenda natus odio.'}
+        </main>
+        <footer>
+          {user.login && (
+            <FooterIcons>
+              <FontAwesomeIcon icon={faGithub} />
+              <p>{user.login}</p>
+            </FooterIcons>
+          )}
+
+          {user.company && (
+            <FooterIcons>
+              <FontAwesomeIcon icon={faBuilding} />
+              <p>{user.company}</p>
+            </FooterIcons>
+          )}
+          {user.followers && (
+            <FooterIcons>
+              <FontAwesomeIcon icon={faUserGroup} />
+              <p>{user.followers}</p>
+            </FooterIcons>
+          )}
+        </footer>
+      </section>
+    </ProfileContainer>
+  )
 }

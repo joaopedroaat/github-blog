@@ -12,5 +12,15 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     font-family: 'Nunito', sans-serif;
     line-height: 1.6;
+
+    color: ${(props) => props.theme['base-text']};
+  }
+
+  h1 {
+    color: ${(props) => props.theme['base-title']};
+  }
+
+  h2 {
+    color: ${(props) => props.theme['base-subtitle']}
   }
 `

@@ -7,8 +7,8 @@ export interface UserResponse {
   bio: string | null
   company: string | null
   followers: number
-  avatarUrl: string
-  url: string
+  avatar_url: string
+  profileUrl: string
 }
 
 export const githubApi = axios.create({
