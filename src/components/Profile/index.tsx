@@ -5,9 +5,8 @@ import {
   faUserGroup,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { AxiosResponse } from 'axios'
 import { useEffect, useState } from 'react'
-import { UserResponse, githubApi } from '../../apis/github'
+import { fetchUser } from '../../apis/github'
 import { FooterIcons, ProfileContainer } from './styles'
 
 interface User {
@@ -35,27 +34,13 @@ export function Profile() {
 
   useEffect(() => {
     async function fetchUserData() {
-      const response: AxiosResponse<UserResponse> = await githubApi.get(
-        `/users/joaopedroaat`,
-      )
+      const userData = await fetchUser('joaopedroaat')
 
-      const { id, login, name, bio, company, followers, avatar_url } =
-        response.data
-
-      setUser({
-        id,
-        login,
-        name,
-        bio,
-        company,
-        followers,
-        avatarUrl: avatar_url,
-        profileUrl: `https://github.com/${user.login}`,
-      })
+      setUser({ ...userData, avatarUrl: userData.avatar_url })
     }
 
     fetchUserData()
-  }, [user.login])
+  }, [])
 
   return (
     <ProfileContainer>

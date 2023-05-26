@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 
 export interface UserResponse {
   id: string
@@ -14,3 +14,11 @@ export interface UserResponse {
 export const githubApi = axios.create({
   baseURL: 'https://api.github.com',
 })
+
+export const fetchUser = async (login: string): Promise<UserResponse> => {
+  const response: AxiosResponse<UserResponse> = await githubApi.get(
+    `/users/${login}`,
+  )
+
+  return response.data
+}
