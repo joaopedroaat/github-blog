@@ -1,4 +1,5 @@
 import { styled } from 'styled-components'
+import { NavLink } from 'react-router-dom'
 
 export const PostListContainer = styled.ul`
   margin-top: 4.5rem;
@@ -10,4 +11,9 @@ export const PostListContainer = styled.ul`
   @media (max-width: 1400px) {
     grid-template-columns: 1fr;
   }
+`
+
+export const PostLink = styled(NavLink)`
+  color: ${(props) => props.theme['base-text']};
+  text-decoration: none;
 `
