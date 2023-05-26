@@ -2,14 +2,12 @@ import { styled } from 'styled-components'
 
 export const PostListContainer = styled.ul`
   margin-top: 4.5rem;
-`
 
-export const Row = styled.div`
-  display: flex;
-  gap: 2rem;
-  margin-bottom: 2rem;
-`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2rem;
 
-export const Column = styled.div`
-  flex: 1;
+  @media (max-width: 1400px) {
+    grid-template-columns: 1fr;
+  }
 `

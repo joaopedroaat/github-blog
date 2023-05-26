@@ -11,6 +11,8 @@ export const PostCardContainer = styled.div`
 
   border-radius: 10px;
 
+  overflow: hidden;
+
   header {
     display: flex;
     justify-content: space-between;
