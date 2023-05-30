@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { IPost, PostContext } from '../../contexts/PostContext'
+import { PostHeader } from '../../components/PostHeader'
 
 export function Post() {
   const { posts } = useContext(PostContext)
@@ -13,5 +14,5 @@ export function Post() {
     if (selectedPost) setPost(selectedPost)
   }, [id, posts])
 
-  return <h1>{post.title}</h1>
+  return <PostHeader post={post} />
 }
