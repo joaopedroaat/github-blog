@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react'
 import { PostList } from '../../components/PostList'
 import { Profile } from '../../components/Profile'
-import { fetchIssues } from '../../apis/github'
 
 export interface Post {
   id: number
@@ -14,31 +12,10 @@ export interface Post {
 }
 
 export function Home() {
-  const [posts, setPosts] = useState<Post[]>([])
-
-  useEffect(() => {
-    async function fetchPosts() {
-      const issues = await fetchIssues('github-blog', 'joaopedroaat')
-      const mappedPosts: Post[] = issues.map((issue) => ({
-        id: issue.number,
-        title: issue.title,
-        body: issue.body,
-        comments: issue.comments,
-        createdAt: issue.created_at,
-        url: issue.url,
-        owner: issue.user.login,
-      }))
-
-      setPosts(mappedPosts)
-    }
-
-    fetchPosts()
-  }, [])
-
   return (
     <div>
       <Profile />
-      <PostList posts={posts} />
+      <PostList />
     </div>
   )
 }

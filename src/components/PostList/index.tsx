@@ -1,12 +1,11 @@
-import { Post } from '../../pages/Home'
+import { useContext } from 'react'
 import { PostCard } from '../PostCard'
 import { PostLink, PostListContainer } from './styles'
+import { PostContext } from '../../contexts/PostContext'
 
-interface PostListProps {
-  posts: Post[]
-}
+export function PostList() {
+  const { posts } = useContext(PostContext)
 
-export function PostList({ posts }: PostListProps) {
   return (
     <PostListContainer>
       {posts.map((post) => (
