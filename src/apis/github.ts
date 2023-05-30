@@ -1,6 +1,6 @@
-import axios, { AxiosResponse } from 'axios'
+import axios from 'axios'
 
-export interface UserResponse {
+interface UserResponse {
   id: string
   login: string
   name: string | null
@@ -11,14 +11,27 @@ export interface UserResponse {
   profileUrl: string
 }
 
+interface Issue {
+  id: number
+  title: string
+  body: string
+  comments: number
+  created_at: string
+  url: string
+  user: UserResponse
+}
+
 export const githubApi = axios.create({
   baseURL: 'https://api.github.com',
 })
 
 export const fetchUser = async (login: string): Promise<UserResponse> => {
-  const response: AxiosResponse<UserResponse> = await githubApi.get(
-    `/users/${login}`,
-  )
+  return (await githubApi.get(`/users/${login}`)).data
+}
 
-  return response.data
+export const fetchIssues = async (
+  repo: string,
+  owner: string,
+): Promise<Issue[]> => {
+  return (await githubApi.get(`/repos/${owner}/${repo}/issues`)).data
 }

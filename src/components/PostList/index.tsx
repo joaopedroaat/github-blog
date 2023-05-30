@@ -13,7 +13,7 @@ export function PostList({ posts }: PostListProps) {
         <PostLink key={post.title} to="/post">
           <PostCard
             title={post.title}
-            content={post.content}
+            content={post.body}
             createdAt={post.createdAt}
           />
         </PostLink>
