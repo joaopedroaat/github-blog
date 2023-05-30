@@ -1,6 +1,5 @@
-import { formatDistance } from 'date-fns'
+import { formatDateByDistance } from '../../utils/Formatter'
 import { PostCardContainer } from './styles'
-import { ptBR } from 'date-fns/locale'
 
 interface PostCardProps {
   title: string
@@ -13,12 +12,7 @@ export function PostCard({ title, content, createdAt }: PostCardProps) {
     <PostCardContainer>
       <header>
         <h1>{title}</h1>
-        <small>
-          {formatDistance(new Date(createdAt), Date.now(), {
-            locale: ptBR,
-            addSuffix: true,
-          })}
-        </small>
+        <small>{formatDateByDistance(new Date(createdAt))}</small>
       </header>
       <p>{content}</p>
     </PostCardContainer>
