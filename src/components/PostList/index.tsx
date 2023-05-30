@@ -9,7 +9,7 @@ export function PostList() {
   return (
     <PostListContainer>
       {posts.map((post) => (
-        <PostLink key={post.title} to="/post">
+        <PostLink key={post.id} to={`/posts/${post.id}`}>
           <PostCard
             title={post.title}
             content={post.body}

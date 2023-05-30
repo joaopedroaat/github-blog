@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useEffect, useState } from 'react'
 import { fetchIssues } from '../apis/github'
 
-export interface Post {
+export interface IPost {
   id: number
   title: string
   body: string
@@ -12,7 +12,7 @@ export interface Post {
 }
 
 interface PostContextType {
-  posts: Post[]
+  posts: IPost[]
 }
 
 export const PostContext = createContext({} as PostContextType)
@@ -22,11 +22,11 @@ interface PostProviderProps {
 }
 
 export function PostProvider({ children }: PostProviderProps) {
-  const [posts, setPosts] = useState<Post[]>([])
+  const [posts, setPosts] = useState<IPost[]>([])
 
   const fetchPosts = async () => {
     const issues = await fetchIssues('github-blog', 'joaopedroaat')
-    const mappedPosts: Post[] = issues.map((issue) => ({
+    const mappedPosts: IPost[] = issues.map((issue) => ({
       id: issue.number,
       title: issue.title,
       body: issue.body,
