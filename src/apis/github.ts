@@ -12,7 +12,7 @@ interface UserResponse {
 }
 
 interface Issue {
-  id: number
+  number: number
   title: string
   body: string
   comments: number

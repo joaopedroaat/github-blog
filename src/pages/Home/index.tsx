@@ -20,7 +20,7 @@ export function Home() {
     async function fetchPosts() {
       const issues = await fetchIssues('github-blog', 'joaopedroaat')
       const mappedPosts: Post[] = issues.map((issue) => ({
-        id: issue.id,
+        id: issue.number,
         title: issue.title,
         body: issue.body,
         comments: issue.comments,
