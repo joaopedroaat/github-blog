@@ -5,13 +5,10 @@ export const LayoutHeader = styled.header`
   justify-content: space-between;
   align-items: center;
 
-  min-height: 18.5rem;
+  min-height: 22.5rem;
 
-  background: linear-gradient(
-    180deg,
-    rgba(11, 27, 43, 1) 35%,
-    rgba(4, 25, 46, 1) 100%
-  );
+  background: url('src/assets/Cover.svg') no-repeat;
+  background-size: cover;
 `
 
 export const LayoutContent = styled.main`
@@ -19,4 +16,5 @@ export const LayoutContent = styled.main`
   width: 50%;
 
   margin-top: -5.5rem;
+  margin-bottom: 1rem;
 `
