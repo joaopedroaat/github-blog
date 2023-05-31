@@ -23,6 +23,8 @@ export const PostHeaderContainer = styled.nav`
     font-size: 0.75rem;
     font-weight: bold;
     text-transform: uppercase;
+
+    margin-bottom: 1.25rem;
   }
 
   ul {
@@ -30,6 +32,8 @@ export const PostHeaderContainer = styled.nav`
     gap: 2rem;
     list-style: none;
     color: ${(props) => props.theme['base-span']};
+
+    margin-top: 0.5rem;
 
     li {
       display: flex;
