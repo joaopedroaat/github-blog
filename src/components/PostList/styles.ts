@@ -2,7 +2,7 @@ import { styled } from 'styled-components'
 import { NavLink } from 'react-router-dom'
 
 export const PostListContainer = styled.ul`
-  margin-top: 4.5rem;
+  margin-top: 3rem;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
