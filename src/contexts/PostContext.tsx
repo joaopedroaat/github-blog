@@ -32,7 +32,7 @@ export function PostProvider({ children }: PostProviderProps) {
       body: issue.body,
       comments: issue.comments,
       createdAt: issue.created_at,
-      url: issue.url,
+      url: issue.html_url,
       owner: issue.user.login,
     }))
     setPosts(mappedPosts)
