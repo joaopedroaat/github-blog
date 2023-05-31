@@ -3,7 +3,7 @@ import { styled } from 'styled-components'
 export const PostCardContainer = styled.div`
   padding: 2rem;
 
-  max-height: 16.25rem;
+  height: 16.25rem;
 
   flex: 1;
 
