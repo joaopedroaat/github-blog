@@ -38,12 +38,17 @@ export const ProfileContainer = styled.div`
 
     a {
       display: flex;
+      align-items: center;
       color: ${(props) => props.theme.blue};
       text-decoration: none;
       text-transform: uppercase;
       font-size: 0.875rem;
       font-weight: bold;
       gap: 0.5rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 

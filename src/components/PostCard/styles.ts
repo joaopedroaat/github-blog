@@ -13,6 +13,8 @@ export const PostCardContainer = styled.div`
 
   overflow: hidden;
 
+  border: 2px solid transparent;
+
   header {
     display: flex;
     justify-content: space-between;
@@ -37,5 +39,9 @@ export const PostCardContainer = styled.div`
     line-clamp: 4;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+  }
+
+  &:hover {
+    border-color: ${(props) => props.theme['base-label']};
   }
 `

@@ -15,6 +15,10 @@ export const PostHeaderContainer = styled.nav`
     gap: 0.5rem;
     text-decoration: none;
     color: ${(props) => props.theme.blue};
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   nav {
