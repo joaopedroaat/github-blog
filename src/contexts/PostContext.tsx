@@ -13,6 +13,7 @@ export interface IPost {
 
 interface PostContextType {
   posts: IPost[]
+  fetchPosts: (query?: string) => Promise<void>
 }
 
 export const PostContext = createContext({} as PostContextType)
@@ -24,8 +25,15 @@ interface PostProviderProps {
 export function PostProvider({ children }: PostProviderProps) {
   const [posts, setPosts] = useState<IPost[]>([])
 
-  const fetchPosts = async () => {
-    const issues = await fetchIssues('github-blog', 'joaopedroaat')
+  const fetchPosts = async (query?: string) => {
+    let issues = await fetchIssues('github-blog', 'joaopedroaat')
+
+    if (query) {
+      issues = issues.filter(
+        (issue) => issue.title.includes(query) || issue.body.includes(query),
+      )
+    }
+
     const mappedPosts: IPost[] = issues.map((issue) => ({
       id: issue.number,
       title: issue.title,
@@ -35,6 +43,7 @@ export function PostProvider({ children }: PostProviderProps) {
       url: issue.html_url,
       owner: issue.user.login,
     }))
+
     setPosts(mappedPosts)
   }
 
@@ -43,6 +52,8 @@ export function PostProvider({ children }: PostProviderProps) {
   }, [])
 
   return (
-    <PostContext.Provider value={{ posts }}>{children}</PostContext.Provider>
+    <PostContext.Provider value={{ posts, fetchPosts }}>
+      {children}
+    </PostContext.Provider>
   )
 }
