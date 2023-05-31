@@ -8,7 +8,7 @@ interface UserResponse {
   company: string | null
   followers: number
   avatar_url: string
-  profileUrl: string
+  html_url: string
 }
 
 interface Issue {

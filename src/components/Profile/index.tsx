@@ -36,7 +36,11 @@ export function Profile() {
     async function fetchUserData() {
       const userData = await fetchUser('joaopedroaat')
 
-      setUser({ ...userData, avatarUrl: userData.avatar_url })
+      setUser({
+        ...userData,
+        profileUrl: userData.html_url,
+        avatarUrl: userData.avatar_url,
+      })
     }
 
     fetchUserData()
