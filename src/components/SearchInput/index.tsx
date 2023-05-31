@@ -5,7 +5,7 @@ import { PostContext } from '../../contexts/PostContext'
 export function SearchInput() {
   const [query, setQuery] = useState('')
 
-  const { fetchPosts } = useContext(PostContext)
+  const { posts, fetchPosts } = useContext(PostContext)
 
   const handleInputChange = (evt: ChangeEvent<HTMLInputElement>) => {
     fetchPosts(evt.target.value)
@@ -16,7 +16,7 @@ export function SearchInput() {
     <SearchInputContainer>
       <header>
         <h2>Publicações</h2>
-        <small>6 publicações</small>
+        <small>{posts.length} publicações</small>
       </header>
       <Input
         type="text"
