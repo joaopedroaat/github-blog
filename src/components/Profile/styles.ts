@@ -42,7 +42,7 @@ export const ProfileContainer = styled.div`
       color: ${(props) => props.theme.blue};
       text-decoration: none;
       text-transform: uppercase;
-      font-size: 0.875rem;
+      font-size: 0.75rem;
       font-weight: bold;
       gap: 0.5rem;
 
