@@ -1,5 +1,7 @@
 import { styled } from 'styled-components'
 
+import backgroundImage from '../../assets/Cover.svg'
+
 export const LayoutHeader = styled.header`
   display: flex;
   justify-content: space-between;
@@ -7,7 +9,7 @@ export const LayoutHeader = styled.header`
 
   min-height: 22.5rem;
 
-  background: url('src/assets/Cover.svg') no-repeat;
+  background: url(${backgroundImage}) no-repeat;
   background-size: cover;
 `
 
